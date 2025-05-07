@@ -8,18 +8,18 @@ on:
         required: true
         default: 'nightscout/AndroidAPS'
 
-        pr_number:
-          description: 'PR number to checkout (e.g. 123)'
-          required: true
+      pr_number:
+        description: 'PR number to checkout (e.g. 123)'
+        required: true
 
-        pr_ref_type:
-          description: 'Select PR reference type to checkout'
-          required: true
-          default: 'head'
-          type: choice
-          options:
-            - head
-            - merge
+      pr_ref_type:
+        description: 'Select PR reference type to checkout'
+        required: true
+        default: 'head'
+        type: choice
+        options:
+          - head
+          - merge
 
       buildVariant:
         description: 'Select Build Variant'
