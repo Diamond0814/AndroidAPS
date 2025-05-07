@@ -169,11 +169,7 @@ jobs:
       - name: Determine PR reference
         id: pr_ref
         run: |
-          if [ "${{ github.event.inputs.pr_ref_type }}" = "head" ]; then
-            ref_suffix="head"
-          else
-            ref_suffix="merge"
-          fi
+          ref_suffix=${{ github.event.inputs.pr_ref_type }}
 
           full_ref="refs/pull/${{ github.event.inputs.pr_number }}/$ref_suffix"
 
