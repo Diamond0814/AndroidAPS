@@ -170,7 +170,7 @@ jobs:
         id: pr_ref
         run: |
           PR_NUMBER=${{ github.event.inputs.pr_number }}
-          $PR_REF_TYPE=${{ github.event.inputs.pr_ref_type }}
+          PR_REF_TYPE=${{ github.event.inputs.pr_ref_type }}
 
           full_ref="refs/pull/${{ github.event.inputs.pr_number }}/$PR_REF_TYPE"
 
