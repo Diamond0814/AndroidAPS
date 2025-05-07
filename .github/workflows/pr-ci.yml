@@ -169,6 +169,7 @@ jobs:
       - name: Determine PR reference
         id: pr_ref
         run: |
+          pr_number=${{ github.event.inputs.pr_number }}
           ref_suffix=${{ github.event.inputs.pr_ref_type }}
 
           full_ref="refs/pull/${{ github.event.inputs.pr_number }}/$ref_suffix"
