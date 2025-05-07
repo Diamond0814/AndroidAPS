@@ -169,16 +169,16 @@ jobs:
       - name: Determine PR reference
         id: pr_ref
         run: |
-          pr_number=${{ github.event.inputs.pr_number }}
-          ref_suffix=${{ github.event.inputs.pr_ref_type }}
+          PR_NUMBER=${{ github.event.inputs.pr_number }}
+          $PR_REF_TYPE=${{ github.event.inputs.pr_ref_type }}
 
-          full_ref="refs/pull/${{ github.event.inputs.pr_number }}/$ref_suffix"
+          full_ref="refs/pull/${{ github.event.inputs.pr_number }}/$PR_REF_TYPE"
 
           echo "Resolved PR ref: $full_ref"
           echo "ref_name=$full_ref" >> $GITHUB_OUTPUT
           
-          echo "pr_number=$pr_number" >> $GITHUB_ENV
-          echo "ref_suffix=$ref_suffix" >> $GITHUB_ENV
+          echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
+          echo "PR_REF_TYPE=$PR_REF_TYPE" >> $GITHUB_ENV
 
       - name: Checkout PR #${{ github.event.inputs.pr_number }} (${{ github.event.inputs.pr_ref_type }})
         uses: actions/checkout@v4
@@ -324,7 +324,7 @@ jobs:
             echo "✅ Uploaded: $NAME"
           }
 
-          upload_to_gdrive "aaps-${VERSION}${VERSION_SUFFIX}.apk" "aaps-${VERSION}${VERSION_SUFFIX}-PR${pr_number}${pr_ref_type}.apk"
-          upload_to_gdrive "aaps-wear-${VERSION}${VERSION_SUFFIX}.apk" "aaps-wear-${VERSION}${VERSION_SUFFIX}-PR${pr_number}${pr_ref_type}.apk"
+          upload_to_gdrive "aaps-${VERSION}${VERSION_SUFFIX}.apk" "aaps-${VERSION}${VERSION_SUFFIX}-PR${PR_NUMBER}${PR_REF_TYPE}.apk"
+          upload_to_gdrive "aaps-wear-${VERSION}${VERSION_SUFFIX}.apk" "aaps-wear-${VERSION}${VERSION_SUFFIX}-PR${PR_NUMBER}${PR_REF_TYPE}.apk"
 
           echo "🎉 APKs successfully uploaded to Google Drive!"
