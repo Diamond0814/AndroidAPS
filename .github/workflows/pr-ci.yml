@@ -180,7 +180,7 @@ jobs:
           echo "PR_NUMBER=$PR_NUMBER" >> $GITHUB_ENV
           echo "PR_REF_TYPE=$PR_REF_TYPE" >> $GITHUB_ENV
 
-      - name: Checkout PR #${{ github.event.inputs.pr_number }} (${{ github.event.inputs.pr_ref_type }})
+      - name: Checkout pull/${{ github.event.inputs.pr_number }}/${{ github.event.inputs.pr_ref_type }}
         uses: actions/checkout@v4
         with:
           repository: ${{ github.event.inputs.repo }}
